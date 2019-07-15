@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Register</title>
+</head>
+
+<body>
+
+  <!-- Default form register -->
+  <form class="text-center border border-light p-5" action="/register" method="POST">
+
+    <p class="h4 mb-4">Sign up</p>
+    <p>That email is already in use, please enter a new one</p>
+
+    <div class="form-row mb-4">
+      <div class="col">
+        <!-- First name -->
+        <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First name">
+      </div>
+      <div class="col">
+        <!-- Last name -->
+        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last name">
+      </div>
+    </div>
+
+    <!-- E-mail -->
+    <input name="email" type="email" id="userEmail" class="form-control mb-4" placeholder="E-mail">
+
+    <!-- Password -->
+    <input name="password" type="password" id="userPassword" class="form-control mb-4" placeholder="Password"
+      aria-describedby="defaultRegisterFormPasswordHelpBlock">
+
+    <!-- Phone number -->
+    <input name="phone" type="text" id="userPhone" class="form-control mb-4" placeholder="Phone number"
+      aria-describedby="defaultRegisterFormPhoneHelpBlock">
+
+
+    <!-- Sign up button -->
+
+    <hr>
+    <button id="signup-button" class="btn btn-info my-4 btn-block">Sign in</button>
+  </form>
+
+  <!-- Default form register -->
+
+</body>
+
+</html>

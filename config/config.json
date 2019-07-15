@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "Passwordsucks!1",
+    "database": "practice_db",
+    "host": "localhost",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "Passwordsucks!1",
+    "database": "practice_db",
+    "host": "localhost",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "Passwordsucks!1",
+    "database": "practice_db",
+    "host": "localhost",
+    "port": 3306,
+    "dialect": "mysql"
+  }
+}
