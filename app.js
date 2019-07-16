@@ -71,6 +71,15 @@ app.get('/login/fail', (req, res) => {
 app.post('/login', (req, res) => {
   authenticateUser(req.body, res)
 })
+app.post('/login-fail', (req, res) => {
+  authenticateUser(req.body, res)
+})
+
+app.post('/survey', (req, res) => {
+  console.log(req.body)
+  updateUser(req.body)
+})
+
 
 
 
@@ -80,8 +89,8 @@ let authenticateUser = (x, a) => {
     where: {
       email: x.email
     }
-  }).then((response, err) => {
-    if (err) throw err;
+  }).then((response) => {
+    console.log(x.password, response)
     if (x.password === response[0].password && response[0].userBorn == 0) {
       a.redirect('/survey')
     }
@@ -111,14 +120,31 @@ let checkEmail = (a, b, c) => {
         password: b.password,
         phoneNumber: b.phone,
       }).then(function (response) {
+        console.log('look')
         c.redirect('/login')
       })
     }
     else {
+      console.log('fail')
       c.redirect('/failed')
     }
   })
 }
+
+let updateUser = (x) => {
+  db.users.update({
+      age: x.age,
+      gender: x.gender,
+      height: x.height,
+      weight: x.weight,
+      weightGoal: x.goal,
+      userBorn: 1},
+      {where:{email: x.username}}
+  ).then(function (data) {
+    console.log(data)
+  })
+}
+
 
 db.sequelize.sync().then(function () {
   app.listen(PORT, function () {

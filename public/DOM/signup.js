@@ -19,3 +19,20 @@ $("#login-fail-button").on('click', function () {
   localStorage.setItem('username', username)
 })
 
+$("#surveyForm").on('submit',function(e){
+  e.preventDefault()
+  let bigData = {
+    username: localStorage.getItem('username'),
+    weight:$("#weight").val().trim(),
+    height:$("#height").val().trim(),
+    age:$("#age").val().trim(),
+    gender: $("#age").val().trim(),
+    goal: $("#goalWeight").val().trim()
+  }
+  console.log(localStorage.getItem('username'))
+
+  $.post('/survey',bigData,function(data){
+
+  })
+})
+
