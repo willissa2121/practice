@@ -65,25 +65,23 @@ app.get('/login', (req, res) => {
 })
 
 app.get('/login/fail', (req, res) => {
-  console.log('checked')
   res.render('login-fail')
 })
 
 app.post('/login', (req, res) => {
-  console.log(req.body)
   authenticateUser(req.body, res)
 })
 
 
 
 let authenticateUser = (x, a) => {
+
   db.users.findAll({
     where: {
       email: x.email
     }
   }).then((response, err) => {
     if (err) throw err;
-    console.log(response[0].userBorn)
     if (x.password === response[0].password && response[0].userBorn == 0) {
       a.redirect('/survey')
     }

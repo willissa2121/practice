@@ -35,6 +35,16 @@ module.exports = (function (sequelize, DataTypes) {
     weight: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+    userBorn: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
+    userBornToday: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
     }
   })
   return users;
