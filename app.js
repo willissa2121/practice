@@ -4,6 +4,7 @@ var exphbs = require("express-handlebars");
 var mysql = require('mysql')
 
 
+
 var app = express();
 var PORT = process.env.PORT || 8080;
 
@@ -80,6 +81,24 @@ app.post('/survey', (req, res) => {
   updateUser(req.body)
 })
 
+let checkDate = () => {
+  db.users.findAll({
+    attributes: ['userBornToday', 'updatedAt'],
+    where: {
+      id: 1
+    }
+  }).then(response => {
+    let date = new Date()
+    console.log(date, response[0].dataValues.updatedAt)
+    if (inputDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0)) {
+      console.log('true');
+    }
+    else {
+      console.log('false');
+    }
+  })
+}
+checkDate()
 
 
 
@@ -133,13 +152,14 @@ let checkEmail = (a, b, c) => {
 
 let updateUser = (x) => {
   db.users.update({
-      age: x.age,
-      gender: x.gender,
-      height: x.height,
-      weight: x.weight,
-      weightGoal: x.goal,
-      userBorn: 1},
-      {where:{email: x.username}}
+    age: x.age,
+    gender: x.gender,
+    height: x.height,
+    weight: x.weight,
+    weightGoal: x.goal,
+    userBorn: 1
+  },
+    { where: { email: x.username } }
   ).then(function (data) {
     console.log(data)
   })
